@@ -16,3 +16,6 @@ logging:
     root: info
     com.xwgames.blog: debug
   file: log/blog-dev.log
+
+server:
+  port: 1234

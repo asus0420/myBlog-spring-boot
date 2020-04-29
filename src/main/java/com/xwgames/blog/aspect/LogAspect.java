@@ -31,16 +31,16 @@ public class LogAspect {
         String classMethod = joinPoint.getSignature().getDeclaringTypeName()+"."+joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         RequestLog requestLog = new RequestLog(url,ip,classMethod,args);
-        logger.info("Request : {}",requestLog);
+        logger.info("在切面之前--Request : {}",requestLog);
     }
 
     @After("log()")
     public void doAfter(){
-        logger.info("----------doAfter----------");
+        logger.info("----------在切面之后--doAfter----------");
     }
     @AfterReturning(returning = "result",pointcut = "log()")
     public void doAfterReturn(Object result){
-        logger.info("Result : {}"+result);
+        logger.info("----------在切面之后返回--Result : {}"+result);
     }
 
     private class RequestLog{
